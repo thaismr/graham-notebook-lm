@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { grahamData } from "./data/grahamData";
 import Card from "./components/Card";
 import List from "./components/List";
+import Modal from "./components/Modal";
 import "./App.css";
 
 function App() {
+  const [modalData, setModalData] = useState({
+    isOpen: false,
+    title: "",
+    content: "",
+  });
+
+  const handleItemClick = (item) => {
+    setModalData({
+      isOpen: true,
+      title: item.text,
+      content: item.explanation,
+    });
+  };
+
+  const closeModal = () => {
+    setModalData({ ...modalData, isOpen: false });
+  };
+
   return (
     <div className="App">
       <header className="app-header">
@@ -24,18 +43,22 @@ function App() {
               <List
                 title="Investimento vs. Especulação"
                 items={grahamData.sections[0].subsections[0].items}
+                onItemClick={handleItemClick}
               />
               <List
                 title="Margem de Segurança"
                 items={grahamData.sections[0].subsections[1].items}
+                onItemClick={handleItemClick}
               />
               <List
                 title="Senhor Mercado"
                 items={grahamData.sections[0].subsections[2].items}
+                onItemClick={handleItemClick}
               />
               <List
                 title="Disclaimer (Passivo)"
                 items={grahamData.sections[0].subsections[3].items}
+                onItemClick={handleItemClick}
               />
             </div>
           </Card>
@@ -45,12 +68,17 @@ function App() {
             <List
               title="Empreendedor (Ativo)"
               items={grahamData.sections[1].subsections[0].items}
+              onItemClick={handleItemClick}
             />
           </Card>
 
           {/* Critérios de Seleção */}
           <Card title="Critérios de Seleção (quantitativos)" icon="📊">
-            <List items={grahamData.sections[2].items} numbered={true} />
+            <List
+              items={grahamData.sections[2].items}
+              numbered={true}
+              onItemClick={handleItemClick}
+            />
           </Card>
 
           {/* Estratégias Quantitativas */}
@@ -58,24 +86,40 @@ function App() {
             <List
               title="Net-Net (NCAV)"
               items={grahamData.sections[3].subsections[0].items}
+              onItemClick={handleItemClick}
             />
             <List
               title="Fórmula de Graham"
               items={grahamData.sections[3].subsections[1].items}
+              onItemClick={handleItemClick}
             />
           </Card>
 
           {/* Psicologia e Comportamento */}
           <Card title="Psicologia e Comportamento" icon="🧠">
-            <List items={grahamData.sections[4].items} />
+            <List
+              items={grahamData.sections[4].items}
+              onItemClick={handleItemClick}
+            />
           </Card>
 
           {/* Legados e Discípulos */}
           <Card title="Legados e Discípulos" icon="🏆">
-            <List items={grahamData.sections[5].items} />
+            <List
+              items={grahamData.sections[5].items}
+              onItemClick={handleItemClick}
+            />
           </Card>
         </div>
       </main>
+
+      <Modal
+        isOpen={modalData.isOpen}
+        onClose={closeModal}
+        title={modalData.title}
+      >
+        {modalData.content}
+      </Modal>
 
       <footer className="app-footer">
         <p>Based on Benjamin Graham's teachings - The Intelligent Investor</p>
