@@ -11,7 +11,13 @@
 
 ## 📚 Sobre o Projeto
 
-Este é um aplicativo web educacional simples, focado nos princípios financeiros de **Benjamin Graham**.
+Este é um aplicativo web educacional simples, que apresenta um mapa mental com os princípios financeiros de **Benjamin Graham**.
+
+Você pode experimentá-lo aqui: 
+
+🔗 [https://github.com/thaismr/graham-notebook-lm/](https://github.com/thaismr/graham-notebook-lm/)
+
+---
 
 ![Tela Principal - Cards Informativos](print1.png)
 
