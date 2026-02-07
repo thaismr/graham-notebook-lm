@@ -34,10 +34,10 @@ Este é um aplicativo web educacional simples, focado nos princípios financeiro
 
 ```bash
 # Clone o repositório
-git clone https://github.com/thaismr/DIO-Benjamin-Graham-NotebookLM.git
+git clone https://github.com/thaismr/graham-notebook-lm.git
 
 # Entre no diretório
-cd DIO-Benjamin-Graham-NotebookLM
+cd graham-notebook-lm
 
 # Instale as dependências
 npm install
